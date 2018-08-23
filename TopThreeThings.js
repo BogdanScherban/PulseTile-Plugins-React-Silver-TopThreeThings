@@ -24,7 +24,7 @@ import TopThreeThingsDetail from './TopThreeThingsDetail/TopThreeThingsDetail';
 import TopThreeThingsCreateForm from './TopThreeThingsCreate/TopThreeThingsCreateForm';
 import { getDDMMMYYYY } from '../../../../utils/time-helpers.utils';
 import { checkIsValidateForm, operationsOnCollection } from '../../../../utils/plugin-helpers.utils';
-import { testConstants, isDevMode } from '../../../../config/for-test.constants';
+import { imageSource } from './ImageSource';
 
 const TOP_THREE_THINGS_MAIN = 'topThreeThingsMain';
 const TOP_THREE_THINGS_CREATE = 'topThreeThingsCreate';
@@ -250,9 +250,6 @@ export default class TopThreeThings extends PureComponent {
     const historyState = this.context.router.history.location.state;
     const isImportFromDocuments = historyState && historyState.importData;
     const isPatientHasTopThreeThings = (get(allTopThreeThings, 'length', 0) > 0) ? true : false;
-
-    const imageLocation = '/images/banners/top3.jpg';
-    const imageSource = isDevMode ? (testConstants.hostName + imageLocation) : imageLocation;
 
     return (<section className="page-wrapper">
       {!isDetailPanelVisible  || isCreatePanelVisible ?
